@@ -68,6 +68,15 @@ timer.onTick(function() {
 }, 5000);
 ```
 
+Resume time tracking of your tasks, in a simple way with `setStartTime` method, passing the time as a parameter in the format `'00:00:00'`.
+```js
+// code...
+var task = db.get_task();
+var timer = new Stopwatch();
+timer.setStartTime(task.time);  //time format value '00:00:00' typeof String
+timer.start()
+````
+
 ## Testing
 
 Current build status is available on [Travis CI](https://travis-ci.org/aduth/Stopwatch.js).
