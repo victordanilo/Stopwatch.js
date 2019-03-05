@@ -132,6 +132,23 @@
         return setTimeout(_checkExpected, 1000);
       });
     });
+    describe('#setStartTime()', function() {
+      var time;
+      return time = beforeEach(function() {
+        var timer;
+        timer = new Stopwatch();
+        return it('should set the start time of the count', function(done) {
+          var _verify;
+          timer.setStartTime('01:22:35');
+          _verify = function() {
+            timer.start();
+            expect(timer.getElapsed()).to.be.above(0);
+            return done();
+          };
+          return setTimeout(_verify, 100);
+        });
+      });
+    });
     describe('#onTick()', function() {
       it('should tick once a second by default', function(done) {
         var timer;

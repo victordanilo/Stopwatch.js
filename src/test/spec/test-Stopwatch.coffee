@@ -126,6 +126,22 @@ describe 'Stopwatch', ->
 
       setTimeout _checkExpected, 1000
 
+  describe '#setStartTime()', ->
+    time =
+
+    beforeEach ->
+      timer = new Stopwatch()
+
+      it 'should set the start time of the count', (done) ->
+        timer.setStartTime('01:22:35');
+
+        _verify = ->
+          timer.start()
+          expect(timer.getElapsed()).to.be.above 0
+          done()
+
+        setTimeout _verify, 100
+
   describe '#onTick()', ->
     it 'should tick once a second by default', (done) ->
       timer = new Stopwatch()

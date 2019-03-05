@@ -29,6 +29,20 @@ class Stopwatch
     startTime = @startTime or now
     return now - startTime + @previousElapsed
 
+  setStartTime: (timeString) ->
+    return if @running
+    format = /^\d{2}:\d{2}:\d{2}$/
+    throw new Error("timeString format is invalid, accepted format is '00:00:00'") unless format.test(timeString)
+    time = timeString.split(':');
+    hr = time[0]
+    min = time[1]
+    sec = time[2]
+    startTime = 0
+    startTime += hr * 3600000
+    startTime += min * 60000
+    startTime += sec * 1000
+    @.previousElapsed = startTime
+
   onTick: (callback, resolution = 1000, startImmediate = false) ->
     throw new TypeError('Must provide a valid callback function') unless typeof callback is 'function'
 
